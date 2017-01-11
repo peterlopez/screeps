@@ -3,19 +3,19 @@
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
-var roleRepairman = require('role.repairman');
+var roleFixer = require('role.fixer');
 
 const CREEP_BODY_PARTS = {
     'harvester' : [WORK, WORK, WORK, CARRY, MOVE],
     'upgrader'  : [WORK, WORK, WORK, CARRY, MOVE],
     'builder'   : [WORK, CARRY, CARRY, MOVE, MOVE],
-    'repairman' : [WORK, CARRY, CARRY, MOVE, MOVE],
+    'fixer'     : [WORK, CARRY, CARRY, MOVE, MOVE],
 };
 const MAX_CREEPS = {
     'harvester': 4,
     'upgrader': -1,
     'builder': 2,
-    'repairman': 2,
+    'fixer': 2,
 };
 
 module.exports.loop = function () {
@@ -44,10 +44,10 @@ module.exports.loop = function () {
         var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
         var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
         var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
-        var repairman = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairman');
+        var fixer = _.filter(Game.creeps, (creep) => creep.memory.role == 'fixer');
     
         // Find creep type with least amount of creeps
-        var allCreeps = {'harvester': harvesters, 'builder': builders, 'upgrader': upgraders, 'repairman': repairman};
+        var allCreeps = {'harvester': harvesters, 'builder': builders, 'upgrader': upgraders, 'fixer': fixer};
         var leastCreeps = allCreeps.upgrader.length;
         var leastCreepsType = 'upgrader';
 
@@ -95,8 +95,8 @@ module.exports.loop = function () {
         if(creep.memory.role == 'builder') {
             roleBuilder.run(creep);
         }
-        if(creep.memory.role == 'repairman') {
-            roleRepairman.run(creep);
+        if(creep.memory.role == 'fixer') {
+            roleFixer.run(creep);
         }
     }
 }
