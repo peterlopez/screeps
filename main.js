@@ -26,7 +26,7 @@ module.exports.loop = function () {
     
     if(Game.spawns['Spawn1'].energy == Game.spawns['Spawn1'].energyCapacity && extensionsFull) {
         var creepFactory = require('creep.factory');
-        var newCreepRole = creepFactory.getNewRole();
+        var newCreepRole = creepFactory.getNewCreepRole();
         if(newCreepRole) {
             console.log("Spawning new '"+newCreepRole+"'");
             creepFactory.createCreep(newCreepRole);
