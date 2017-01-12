@@ -13,7 +13,7 @@ roleHarvester.run = function(creep)
         this.gather(creep);
     }
     else {
-        this.depositPayload();
+        this.depositPayload(creep);
     }
 };
 
@@ -34,7 +34,7 @@ roleHarvester.gather = function(creep)
 /**
  * Move to and deposit energy to storage
  */
-roleHarvester.depositPayload = function()
+roleHarvester.depositPayload = function(creep)
 {
     var targets = creep.room.find(FIND_STRUCTURES, {
         filter: (structure) => {
