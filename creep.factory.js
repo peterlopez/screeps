@@ -28,7 +28,7 @@ creepFactory.getNewCreepRole = function() {
 
     // Loop through each creep role
     // comparing counts with quotas
-    for(role in creepRoles) {
+    for(var role in creepRoles) {
         var currentDiff = CREEPS_QUOTA[role] - creepRoles[role].length;
 
         newRole = currentDiff > diff ? role : newRole;
